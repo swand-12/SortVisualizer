@@ -1,8 +1,4 @@
-import  { useState } from 'react';
-
-const SortingAlgorithmDropdown = () => {
-  const [selectedAlgorithm, setSelectedAlgorithm] = useState('');
-
+const SortingAlgorithmDropdown = ({ selectedAlgorithm, setSelectedAlgorithm }) => {
   const sortingAlgorithms = [
     { value: 'bubbleSort', label: 'Bubble Sort' },
     { value: 'selectionSort', label: 'Selection Sort' },
@@ -17,10 +13,7 @@ const SortingAlgorithmDropdown = () => {
   ];
 
   const handleChange = (event) => {
-    const selectedValue = event.target.value;
-    setSelectedAlgorithm(selectedValue);
-    console.log(`Selected sorting algorithm: ${selectedValue}`);
-    // You can add additional logic here based on the selected algorithm
+    setSelectedAlgorithm(event.target.value);
   };
 
   return (
@@ -49,7 +42,10 @@ const SortingAlgorithmDropdown = () => {
 
       {selectedAlgorithm && (
         <div style={{ marginTop: '20px' }}>
-          Selected: <strong>{sortingAlgorithms.find(algo => algo.value === selectedAlgorithm)?.label}</strong>
+          Selected:{' '}
+          <strong>
+            {sortingAlgorithms.find((algo) => algo.value === selectedAlgorithm)?.label}
+          </strong>
         </div>
       )}
     </div>

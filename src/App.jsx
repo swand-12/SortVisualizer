@@ -5,10 +5,12 @@ import './App.css'
 import Block from './components/block.jsx'
 import SortingAlgorithmDropdown from './components/sortingalgorithmDropDown.jsx'
 import ArraySizeInput from './components/ArraySizeInput.jsx'
+import StartButton from './components/StartButton.jsx'
 function App() {
   const [arraySize, setArraySize] = useState(10);
   const [arr, setArr] = useState([]);
   const [scaleFactor, setScaleFactor] = useState(1);
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState('');
 
   // Function to generate a random array of given size
   const generateArray = (size) => {
@@ -34,7 +36,15 @@ function App() {
   return (
     <>
       <h1>Sorting Algorithm Visualizer</h1>
-      <SortingAlgorithmDropdown />
+      <SortingAlgorithmDropdown
+        selectedAlgorithm={selectedAlgorithm}
+        setSelectedAlgorithm={setSelectedAlgorithm}
+     />
+      <StartButton 
+        selectedAlgorithm={selectedAlgorithm} 
+        arr={arr} 
+        setArr={setArr} 
+      />
       <ArraySizeInput arrays={arraySize} setArrays={setArraySize} />
       <div style={{ display: 'flex', alignItems: 'flex-end', height: '80vh' }}>
         {arr.map((value, index) => (
